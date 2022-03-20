@@ -1,6 +1,6 @@
 {
-  "name": "afzalroq/yii2-cms",
-  "description": "Yii2 cms extension",
+  "name": "Dilshoddevoloper/yii2-cms-private",
+  "description": "Yii2 cms private extension",
   "keywords": [
     "yii2",
     "framework",
@@ -8,14 +8,14 @@
     "content",
     "cms"
   ],
-  "homepage": "https://www.github.com/afzalroq/yii2-cms",
+  "homepage": "https://github.com/Dilshoddevoloper/yii2-cms-private",
   "type": "yii2-extension",
   "license": "BSD-3-Clause",
   "authors": [
     {
-      "name": "Proactive.uz",
-      "email": "info@proactive.uz",
-      "homepage": "https://proactive.uz"
+      "name": "Bolalarolami.uz",
+      "email": "ruzimurodovdilshod9@gmail.com",
+      "homepage": "https://bolalarolami.uz/uz"
     }
   ],
   "require": {
