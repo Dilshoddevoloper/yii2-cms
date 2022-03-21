@@ -239,7 +239,7 @@ class Items extends ActiveRecord
         if (Module::getInstance()->textConverter) {
             $uz = \Yii::$app->params['cms']['languageIds']['uz']??null;
             $oz = \Yii::$app->params['cms']['languageIds']['oz']??null;
-            if($oz && $uz){
+            if($oz || $uz){
                 $entity = $this->entity;
                 for ($i = 1; $i <= 7; $i++) {
                     if ($entity->isTranslateble('text_' . $i)) {
