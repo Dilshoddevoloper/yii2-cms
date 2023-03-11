@@ -241,6 +241,14 @@ class Items extends \afzalroq\cms\entities\Items implements Linkable
         }
     }
 
+
+    public function updateViewsCountNew()
+    {
+        $this->views_count++;
+        $this->detachBehaviors();
+        $this->save();
+    }
+
     public function getComments()
     {
         return new \yii\data\ActiveDataProvider([

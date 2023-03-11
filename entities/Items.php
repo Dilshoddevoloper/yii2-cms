@@ -212,7 +212,7 @@ class Items extends ActiveRecord
     {
         $this->slug = preg_replace('/[^a-z0-9\-]/', '', $this->slug);
 
-        if ($this->entity->use_seo)
+        if ($this->entity->use_seo) {
             $this->seo_values = [
                 'meta_title_0' => $this->meta_title_0 ?? null,
                 'meta_title_1' => $this->meta_title_1 ?? null,
@@ -232,6 +232,32 @@ class Items extends ActiveRecord
                 'meta_keyword_3' => $this->meta_keyword_3 ?? null,
                 'meta_keyword_4' => $this->meta_keyword_4 ?? null
             ];
+
+            if ($this->entity->use_seo == 2){
+                $seo_values = $this->seo_values;
+
+                if (!empty($this->seo_values['meta_keyword_0']) && empty($this->seo_values['meta_keyword_3']) ) {
+                    $result = TextConverter::to_cyrillic($this->seo_values['meta_keyword_0']);
+                    $seo_values['meta_keyword_3'] = $result;
+                    $this->seo_values = $seo_values;
+                } elseif (empty($this->seo_values['meta_keyword_0']) && !empty($this->seo_values['meta_keyword_3']) ) {
+                    $result = TextConverter::to_latin($this->seo_values['meta_keyword_3']);
+                    $seo_values['meta_keyword_0'] = $result;
+                    $this->seo_values = $seo_values;
+                }
+
+                if (!empty($this->seo_values['meta_des_0']) && empty($this->seo_values['meta_des_3']) ) {
+                    $result = TextConverter::to_cyrillic($this->seo_values['meta_des_0']);
+                    $seo_values['meta_des_3'] = $result;
+                    $this->seo_values = $seo_values;
+                } elseif (empty($this->seo_values['meta_des_0']) && !empty($this->seo_values['meta_des_3']) ) {
+                    $result = TextConverter::to_latin($this->seo_values['meta_des_3']);
+                    $seo_values['meta_des_0'] = $result;
+                    $this->seo_values = $seo_values;
+                }
+            }
+
+        }
 
         $entity = Entities::findOne($this->entity_id);
 
